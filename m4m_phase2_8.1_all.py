@@ -98,22 +98,22 @@ users = [
 "ID-0826-124603PMIST-530874004"
 ]
 
-
+#this is a function that takes a parameter dict
 def getOrderOfRounds(dict):
-	roundLetters = []
-	for x in xrange(1,6):
+	roundLetters = [] #this is an empty array that will be filled by the for loop
+	for x in range(1,6): #for loop that takes x in the range of 1, 2, 3, 4, 5
 		for field in dict:
-			if (field[8] == str(x)):
-				roundLetters.append(field[6])
+			if (field[8] == str(x)): #If 7th value in field dictionary is string x
+				roundLetters.append(field[6]) #Append the the roundLetters array with the 5th value of the field dict
 				break
-	return roundLetters
+	return roundLetters #return the appended array of roundLetters
 
-roundInfoAMT = [ ]
-for item in users:
-	for userRnd in data["M4M_Phase2_AMT"]: 
-		if (item == userRnd):
-			letters = getOrderOfRounds(data["M4M_Phase2_AMT"][userRnd])	
-			print(userRnd + ", " + ", ".join(letters))
+roundInfoAMT = [ ] #this is an empty array
+for item in users: #a for loop that takes item from the list of users
+	for userRnd in data["M4M_Phase2_AMT"]: #this for loop takes an item called userRnd from the dictionary data returning the values associated with the key "M4M_Phase2_AMT"
+		if (item == userRnd): #if the item equals to userRnd
+			letters = getOrderOfRounds(data["M4M_Phase2_AMT"][userRnd])	#assign letters variable as getOrderOfRounds function that passes data dictionary with values associated w key ["M4M_Phase2_AMT"][userRnd]
+			print(userRnd + ", " + ", ".join(letters)) #print out userRnd,, joining with letters variable
 print (roundInfoAMT)
 
 roundInfoSM = [ ]
